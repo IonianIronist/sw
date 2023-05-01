@@ -27,7 +27,7 @@
   - [awesomewm](https://awesomewm.org/) - ένα window manager ανοιχτού κώδικα γραμμένο σε lua,
 το οποίο το [έχω προσαρμόσει](https://github.com/IonianIronist/configs/tree/main/awesome) ώστε να τεριάζει στις ανάγκες μου
   - [tmux](https://github.com/tmux/tmux/wiki) - o GNU terminal multiplexer, που κάνει θαύματα ώστε όλοι οι σέρβερς μου και τα ξεχωριστά πρότζεκτ που πρέπει να τρέχουν μαζί να είναι οργανομένα και εύκολα προσβάσιμα. Έχω ένα μικρό [config](https://github.com/IonianIronist/configs/tree/main/tmux) και γι αυτό.
-  - [neovim](https://neovim.io/) - Μάλλον το πιο σημαντικό κομμάτι του μικρού αυτού στακ που πλέον χωρίς αυτό πλέον δεν ζω. [config](https://github.com/IonianIronist/configs/tree/main/nvim)
+  - [neovim](https://neovim.io/) - Μάλλον το πιο σημαντικό κομμάτι του μικρού αυτού στακ που πλέον χωρίς αυτό δεν ζω. [config](https://github.com/IonianIronist/configs/tree/main/nvim)
   
  Έχοντας πει αυτά, σκοπός μου είναι να εξελίξω περισσότερο τις γνώσεις μου όσο αφορά τα συνηθισμένα workflows που χρησιμοποιούνται κατά την ανάπτυξη εφαρμογών, από το development μέχρι το
  deployment, καθώς και να εξοικειωθώ ακόμα καλύτερα με το σύστημά μου και να καταφέρω να υλοποιήσω κάποιες βελτιώσεις όπου αυτό είναι δυνατό.
