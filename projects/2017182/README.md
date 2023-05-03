@@ -46,7 +46,7 @@ browser "python -m readability.readability -u %u 2> /dev/null 1 | w3m -dump -T t
 
 Πέραν απ αυτό επειδή παρατήρησα στον .newsboat φάκελο ότι υπάρχει μια sqlite3 βάση η οποία περιέχει τα κασαρισμένα άρθρα είπα να το κάνω λίγο ενδιαφέρον και έγραψα και ένα [python σκριπτάκι](https://gist.github.com/IonianIronist/bbce13d36da8ae5ca083048bc7d40b4b) για να μπορώ να βλέπω γρήγορα χωρίς να ανοίγω tui του προγράμματος αν υπάρχουν καινούρια άρθρα που δεν έχω διαβάσει και πόσα, και ποιό είναι το τελευταίο άρθρο που έχει ανέβει και πότε. 
 
-[asciinema recording](https://asciinema.org/a/psluSghQnLrikn29KGpHnuozx)
+[asciinema recording](https://asciinema.org/a/582270)
 
 ## 3) Γραμμή εντολών - performance monitoring
 
@@ -64,3 +64,7 @@ hyperfine "$CMD" --export-json hyperfine_data.json
 cat hyperfine_data.json | jq -r '.results[].times | map(tostring) | ["1", .[]] | @tsv' | asciigraph
 rm hyperfine_data.json
 ```
+
+[asciinema recording](https://asciinema.org/a/582291) (Έχει βγει λίγο μεγάλο λόγω του benchmark που παίρνει κάπου στο ένα λεπτο, μπορέιτε απλά να σκιπάρετε προς το τέλος)
+
+Έχω χρησιμοποιήσει το [void linux](https://voidlinux.org/), που τρέχει με [runit](https://github.com/void-linux/runit) σαν init system. Οι υπόλοιπες λεπτομέρειες φαίνονται και στο neofetch output στην αρχή των cast.
