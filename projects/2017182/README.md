@@ -32,7 +32,7 @@
  Έχοντας πει αυτά, σκοπός μου είναι να εξελίξω περισσότερο τις γνώσεις μου όσο αφορά τα συνηθισμένα workflows που χρησιμοποιούνται κατά την ανάπτυξη εφαρμογών, από το development μέχρι το
  deployment, καθώς και να εξοικειωθώ ακόμα καλύτερα με το σύστημά μου και να καταφέρω να υλοποιήσω κάποιες βελτιώσεις όπου αυτό είναι δυνατό.
 
-# 2) Γραμμή εντολών - create an agent for news
+## 2) Γραμμή εντολών - create an agent for news
 
 Για το δεύτερο task αποφάσησα να βασιστώ στο [newsboat](https://github.com/newsboat/newsboat) ώστε να μπορώ να διαβάζω το rss feed μου μέσω ενός προγράμματος τερματικού (παλιότερα χρησιμοποιούσα το [fluentreader](https://github.com/yang991178/fluent-reader/)).
 Από μόνο του το newsboat δίνει μια καλή βάση σε αυτό που ήθελα αλλά δεν είχε την δυνατότητα προβολής του κύριου σώματος των άρθρων μέσα από το πρόγραμμα χωρίς παραπάνω configuration.
@@ -47,3 +47,20 @@ browser "python -m readability.readability -u %u 2> /dev/null 1 | w3m -dump -T t
 Πέραν απ αυτό επειδή παρατήρησα στον .newsboat φάκελο ότι υπάρχει μια sqlite3 βάση η οποία περιέχει τα κασαρισμένα άρθρα είπα να το κάνω λίγο ενδιαφέρον και έγραψα και ένα [python σκριπτάκι](https://gist.github.com/IonianIronist/bbce13d36da8ae5ca083048bc7d40b4b) για να μπορώ να βλέπω γρήγορα χωρίς να ανοίγω tui του προγράμματος αν υπάρχουν καινούρια άρθρα που δεν έχω διαβάσει και πόσα, και ποιό είναι το τελευταίο άρθρο που έχει ανέβει και πότε. 
 
 [asciinema recording](https://asciinema.org/a/psluSghQnLrikn29KGpHnuozx)
+
+## 3) Γραμμή εντολών - performance monitoring
+
+Για την 3η άσκηση αποφάσησα να βασιστώ στο [hyperfine](https://github.com/sharkdp/hyperfine) ώστε να μπορέσω να βλέπω γρήγορα και εύκολα πόσο χρόνο παίρνει κάποιο συγγεκριμμένο πρόγραμμα για να τρέξει.
+Το hyperfine μπορεί και βγάζει τα δεδομένα σε json αρχείο, πράγμα το οποίο αξιοποίησα με την βοήθεια του [jq](https://github.com/stedolan/jq) για το parsing του json αντικειμένου, και του [asciigraph](https://github.com/guptarohit/asciigraph) για την γραφική αναπαράσταση των αποτελεσμάτων μέσα στο terminal.
+Για μεγαλύτερη ευκολία έχω κάνει wrap όλες τις εντολές στο παρακάτω bash script:
+
+```
+#!/bin/bash
+
+# Concatenate all arguments into a single string
+CMD="$*"
+# Call hyperfine with the concatenated command and export the results to data.json
+hyperfine "$CMD" --export-json hyperfine_data.json
+cat hyperfine_data.json | jq -r '.results[].times | map(tostring) | ["1", .[]] | @tsv' | asciigraph
+rm hyperfine_data.json
+```
