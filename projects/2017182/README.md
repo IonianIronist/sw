@@ -45,3 +45,5 @@ browser "python -m readability.readability -u %u 2> /dev/null 1 | w3m -dump -T t
 Ουσιαστικά το newsboat πλέον με το 'open in browser' θα τρέχει την παραπάνω εντολή, η οποία χρησιμοποιεί την python βιβλιοθήκη [readability-lxml](https://pypi.org/project/readability-lxml/) για να καθαρίσει το html από ό,τι δεν είναι το κύριο σώμα του άρθρου (λίνκς, μενού, υπόλοιπο περιεχόμενο της σελίδας), το κάνει pipe στο [w3m](https://w3m.sourceforge.net/) το οποίο αφαιρεί όλα τα tags κλπ και στην συνέχεια το καθαρό κείμενο γίνεται pipe στο less για να διαβαστεί τελικά από τον χρήστη.
 
 Πέραν απ αυτό επειδή παρατήρησα στον .newsboat φάκελο ότι υπάρχει μια sqlite3 βάση η οποία περιέχει τα κασαρισμένα άρθρα είπα να το κάνω λίγο ενδιαφέρον και έγραψα και ένα [python σκριπτάκι](https://gist.github.com/IonianIronist/bbce13d36da8ae5ca083048bc7d40b4b) για να μπορώ να βλέπω γρήγορα χωρίς να ανοίγω tui του προγράμματος αν υπάρχουν καινούρια άρθρα που δεν έχω διαβάσει και πόσα, και ποιό είναι το τελευταίο άρθρο που έχει ανέβει και πότε. 
+
+[asciinema recording](https://asciinema.org/a/psluSghQnLrikn29KGpHnuozx)
